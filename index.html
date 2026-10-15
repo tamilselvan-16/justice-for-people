@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justice for People | Safe, Anonymous Complaint & Whistleblower Protection Portal</title>
+  <meta name="description" content="A safe, transparent, and retaliation-protected grievance redressal portal. File complaints 100% anonymously, track status online with a unique Case ID, and stay safeguarded with 30 & 90-day welfare check-ins.">
+  <meta name="keywords" content="complaint portal, anonymous grievance, whistleblower protection, retaliation prevention, public justice, online tracking">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar" aria-label="Main Navigation">
+      <a href="#home" class="nav-brand" onclick="switchView('home'); return false;">
+        <div class="brand-icon">⚖️</div>
+        <div class="brand-title">
+          <span data-i18n="brand_title">Justice for People</span>
+          <span class="brand-subtitle" data-i18n="brand_sub">Safe & Anonymous Redressal</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><button class="nav-link-btn active" data-view="home" data-i18n="nav_home">Overview</button></li>
+        <li><button class="nav-link-btn" data-view="submit" data-i18n="nav_submit">File Complaint</button></li>
+        <li><button class="nav-link-btn" data-view="track" data-i18n="nav_track">Track Case</button></li>
+        <li><button class="nav-link-btn" data-view="retaliation" data-i18n="nav_retaliation">Retaliation Safeguard</button></li>
+        <li><button class="nav-link-btn" data-view="officer" data-i18n="nav_officer">Officer Portal</button></li>
+        <li><button class="nav-link-btn" data-view="metrics" data-i18n="nav_metrics">Impact Metrics</button></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Language Switcher Toggle -->
+        <button id="lang-toggle-btn" class="lang-toggle-btn" title="Toggle Language (English / தமிழ்)">
+          <span>🌐</span>
+          <span id="lang-badge-text" class="lang-badge">தமிழ்</span>
+        </button>
+
+        <!-- Role Badge -->
+        <span class="role-badge-pill role-citizen">
+          <span>🛡️</span>
+          <span>Citizen Shield</span>
+        </span>
+      </div>
+    </nav>
+  </header>
+
+  <div class="main-wrapper">
+    <!-- Top Whistleblower Protection Banner -->
+    <aside class="safety-guarantee-banner" role="complementary" aria-label="Security Banner">
+      <div class="safety-text">
+        <span class="safety-icon">🔒</span>
+        <span data-i18n="safety_banner_text">Whistleblower Protection Guarantee: Your identity is never exposed. File 100% anonymously.</span>
+      </div>
+      <div class="safety-pills">
+        <span class="safety-tag" data-i18n="safety_tag_1">No IP Logging</span>
+        <span class="safety-tag" data-i18n="safety_tag_2">Zero Retaliation Policy</span>
+        <span class="safety-tag" data-i18n="safety_tag_3">Cryptographic Case ID</span>
+      </div>
+    </aside>
+
+    <!-- VIEW 1: HOME / OVERVIEW -->
+    <main id="view-home" class="app-view active">
+      <section class="hero-section">
+        <div class="hero-badge">
+          <span>✨</span>
+          <span data-i18n="hero_badge">Transparent • Protected • Accountable</span>
+        </div>
+        <h1 class="hero-title">
+          <span data-i18n="hero_title_1">Fear-Free Justice,</span><br>
+          <span class="hero-title-highlight" data-i18n="hero_title_2">Zero Retaliation.</span>
+        </h1>
+        <p class="hero-desc" data-i18n="hero_desc">
+          File grievances safely without intimidation. Track your case in real-time with a unique Case ID. Protected by 30 & 90-day automated whistleblower welfare check-ins.
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" onclick="switchView('submit')">
+            <span>✍️</span>
+            <span data-i18n="btn_file_now">File Safe Complaint</span>
+          </button>
+          <button class="btn btn-secondary" onclick="switchView('track')">
+            <span>🔍</span>
+            <span data-i18n="btn_track_now">Track Complaint Status</span>
+          </button>
+          <button class="btn btn-danger" onclick="switchView('retaliation')">
+            <span>🛡️</span>
+            <span data-i18n="btn_retaliation_hub">Retaliation Escalation Hub</span>
+          </button>
+        </div>
+
+        <!-- Quick Track Bar -->
+        <div class="quick-track-container">
+          <input type="text" id="quick-track-input" class="quick-track-input" placeholder="Enter Unique Case ID (e.g., JFP-2026-8942)...">
+          <button id="quick-track-btn" class="btn btn-primary btn-sm">
+            <span data-i18n="track_quick_btn">Track Now</span>
+          </button>
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-dim); margin-top: 0.5rem;">
+          Try sample cases: 
+          <a href="javascript:void(0)" onclick="quickFillTrack('JFP-2026-8942')" style="color: var(--accent-blue-light); margin: 0 0.3rem;">JFP-2026-8942 (Resolved)</a> | 
+          <a href="javascript:void(0)" onclick="quickFillTrack('JFP-2026-9104')" style="color: var(--accent-blue-light); margin: 0 0.3rem;">JFP-2026-9104 (Inquiry)</a> |
+          <a href="javascript:void(0)" onclick="quickFillTrack('JFP-2026-9531')" style="color: var(--accent-blue-light); margin: 0 0.3rem;">JFP-2026-9531 (Assigned)</a>
+        </div>
+      </section>
+
+      <!-- 4 Pillars of the Solution -->
+      <section style="margin-top: 2.5rem;">
+        <div class="section-header" style="justify-content: center; text-align: center; border-bottom: none; margin-bottom: 0.5rem;">
+          <div>
+            <h2 class="section-title" style="justify-content: center;">Built to Overcome Fear & Inaction</h2>
+            <p class="section-subtitle">Addressing every gap in traditional grievance systems with cryptographic safety and guaranteed transparency.</p>
+          </div>
+        </div>
+
+        <div class="pillars-grid">
+          <!-- Pillar 1 -->
+          <article class="pillar-card">
+            <div class="pillar-icon-box icon-emerald">🕵️‍♂️</div>
+            <h3 class="pillar-title" data-i18n="pillar_1_title">100% Anonymous Filing</h3>
+            <p class="pillar-text" data-i18n="pillar_1_desc">Your name and contact details are completely optional. System issues a unique cryptographic reference key.</p>
+          </article>
+
+          <!-- Pillar 2 -->
+          <article class="pillar-card">
+            <div class="pillar-icon-box icon-blue">📡</div>
+            <h3 class="pillar-title" data-i18n="pillar_2_title">Real-time Online Tracking</h3>
+            <p class="pillar-text" data-i18n="pillar_2_desc">Track investigation stages, assigned vigilance officers, and statutory SLA timelines without revealing your identity.</p>
+          </article>
+
+          <!-- Pillar 3 -->
+          <article class="pillar-card">
+            <div class="pillar-icon-box icon-rose">🛡️</div>
+            <h3 class="pillar-title" data-i18n="pillar_3_title">Retaliation Shield (30 & 90 Days)</h3>
+            <p class="pillar-text" data-i18n="pillar_3_desc">Automated welfare check-ins at 30 and 90 days. If threatened or harassed, dedicated fast-track escalation activates instantly.</p>
+          </article>
+
+          <!-- Pillar 4 -->
+          <article class="pillar-card">
+            <div class="pillar-icon-box icon-amber">📜</div>
+            <h3 class="pillar-title" data-i18n="pillar_4_title">Role-Based Audit Logging</h3>
+            <p class="pillar-text" data-i18n="pillar_4_desc">Complainant records are encrypted. Every single officer access is permanently recorded in a tamper-evident audit trail.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Live Quick Impact Highlights -->
+      <section style="margin-top: 3.5rem;">
+        <div class="metrics-summary-grid">
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Avg Resolution Time</span>
+              <span>⚡</span>
+            </div>
+            <div class="metric-value" style="color: #60a5fa;">11.4 Days</div>
+            <div class="metric-delta delta-good">
+              <span>▼ 62% faster</span>
+              <span style="color: var(--text-dim); font-size: 0.72rem;">(From 30 days prior)</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Online Visibility</span>
+              <span>👁️</span>
+            </div>
+            <div class="metric-value" style="color: #34d399;">100%</div>
+            <div class="metric-delta delta-good">
+              <span>Every case trackable</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Documented Verdicts</span>
+              <span>⚖️</span>
+            </div>
+            <div class="metric-value" style="color: #fbbf24;">100%</div>
+            <div class="metric-delta delta-good">
+              <span>Formal legal outcomes</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Audit Trail Integrity</span>
+              <span>🔐</span>
+            </div>
+            <div class="metric-value" style="color: #c084fc;">100%</div>
+            <div class="metric-delta delta-good">
+              <span>Zero untracked views</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- VIEW 2: SUBMIT COMPLAINT -->
+    <section id="view-submit" class="app-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>✍️</span>
+            <span data-i18n="form_heading">File a Grievance or Report Misconduct</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="form_sub">No login required. Choose between 100% Anonymous or Verified submission.</p>
+        </div>
+      </div>
+
+      <!-- Success Receipt Banner (Rendered dynamically upon submit) -->
+      <div id="submission-receipt" class="receipt-card">
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🛡️</div>
+        <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">Complaint Lodged Successfully!</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">
+          Your unique Reference Token has been created. Save this ID safely. You do not need to register or reveal your identity to track status.
+        </p>
+
+        <div class="case-id-display">
+          <span id="receipt-case-id">JFP-2026-0000</span>
+          <button class="copy-btn" onclick="copyCaseId('receipt-case-id')" title="Copy ID">📋 Copy</button>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+          <button class="btn btn-primary btn-sm" onclick="trackFromReceipt()">
+            🔍 Track This Case Now
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="document.getElementById('submission-receipt').classList.remove('show')">
+            ✕ Dismiss
+          </button>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form id="complaint-form">
+          <!-- Anonymity vs Identity Selector -->
+          <div class="identity-switch-box">
+            <label class="form-label" data-i18n="label_identity_type">Select Privacy Mode</label>
+            <div class="identity-toggle-group">
+              <label id="opt-anonymous" class="identity-option-card selected">
+                <input type="radio" name="identityType" id="radio-anonymous" value="anonymous" checked class="option-radio">
+                <div>
+                  <div class="option-title" style="color: #34d399;">
+                    <span>🛡️</span>
+                    <span data-i18n="opt_anonymous_title">100% Anonymous (Recommended)</span>
+                  </div>
+                  <p class="option-desc" data-i18n="opt_anonymous_desc">No name, phone, or email collected. Track using your generated Case ID.</p>
+                </div>
+              </label>
+
+              <label id="opt-verified" class="identity-option-card">
+                <input type="radio" name="identityType" id="radio-verified" value="verified" class="option-radio">
+                <div>
+                  <div class="option-title" style="color: #60a5fa;">
+                    <span>👤</span>
+                    <span data-i18n="opt_verified_title">Verified Complainant</span>
+                  </div>
+                  <p class="option-desc" data-i18n="opt_verified_desc">Provide contact details for direct notices. Identity protected by strict RBAC audit.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Verified Details Section (hidden by default) -->
+          <div id="verified-fields" class="form-row" style="display: none; margin-bottom: 1.5rem; background: rgba(37,99,235,0.06); padding: 1.2rem; border-radius: var(--radius-md); border: 1px dashed rgba(59,130,246,0.3);">
+            <div>
+              <label class="form-label">Full Name <span class="required">*</span></label>
+              <input type="text" id="verified-name" class="form-control" placeholder="e.g., A. Murugan">
+            </div>
+            <div>
+              <label class="form-label">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="verified-phone" class="form-control" placeholder="+91 98XXXXXXXX">
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label class="form-label">Email Address (Optional)</label>
+              <input type="email" id="verified-email" class="form-control" placeholder="murugan@example.com">
+            </div>
+          </div>
+
+          <!-- Grievance Classification -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="complaint-category">
+                <span data-i18n="label_category">Grievance Category</span> <span class="required">*</span>
+              </label>
+              <select id="complaint-category" class="form-control" required>
+                <option value="Corruption & Bribery">Bribery / Illegal Demands / Kickbacks</option>
+                <option value="Harassment & Victimization">Workplace Harassment / Reprisal / Retaliation</option>
+                <option value="Service Delay & Negligence">Gross Administrative Delay / Negligence</option>
+                <option value="Misconduct & Abuse of Power">Abuse of Official Position / Extortion</option>
+                <option value="Public Safety & Quality Violation">Public Safety Hazard / Substandard Public Works</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="complaint-dept">
+                <span data-i18n="label_dept">Target Department / Institution</span> <span class="required">*</span>
+              </label>
+              <select id="complaint-dept" class="form-control" required>
+                <option value="Municipal Corporation & Revenue">Municipal Corporation & Local Body</option>
+                <option value="Public Works & Water Supply">Public Works & Water Supply (PWD/TWAD)</option>
+                <option value="Transport Undertaking & Traffic">State Transport Undertaking / Depot</option>
+                <option value="Health, Hospitals & Sanitation">Public Health Department & Hospitals</option>
+                <option value="Electricity & Power Board">State Electricity Board (TNEB/Discom)</option>
+                <option value="Education & Universities">School / Higher Education Directorate</option>
+                <option value="Civil Supplies & Ration">Civil Supplies & Public Distribution (PDS)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="form-group">
+            <label class="form-label" for="complaint-subject">
+              <span data-i18n="label_subject">Incident Summary / Subject</span> <span class="required">*</span>
+            </label>
+            <input type="text" id="complaint-subject" class="form-control" placeholder="Brief 1-sentence summary of the grievance..." required>
+          </div>
+
+          <!-- Detailed Description -->
+          <div class="form-group">
+            <label class="form-label" for="complaint-details">
+              <span data-i18n="label_details">Detailed Description of Complaint</span> <span class="required">*</span>
+            </label>
+            <textarea id="complaint-details" class="form-control" placeholder="Specify date, location, names of officials involved, demand amount, or exact actions observed..." required></textarea>
+            <div class="form-help">Do not include your personal contact details here if you chose Anonymous mode.</div>
+          </div>
+
+          <!-- Evidence Attachments -->
+          <div class="form-group">
+            <label class="form-label" for="complaint-evidence" data-i18n="label_evidence">Attach Supporting Evidence (Images, Docs, Audio)</label>
+            <input type="file" id="complaint-evidence" class="form-control" multiple>
+            <div class="form-help">Supported formats: PDF, JPG, PNG, MP3, MP4. Files are sanitized and stripped of EXIF / personal metadata.</div>
+          </div>
+
+          <!-- Fear of Retaliation Checkbox -->
+          <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.25); border-radius: var(--radius-md); padding: 1.1rem; margin-bottom: 2rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;">
+              <input type="checkbox" id="fear-check" style="margin-top: 0.25rem; transform: scale(1.2);">
+              <div>
+                <strong style="color: #f43f5e; font-size: 0.92rem;" data-i18n="label_fear_check">Do you anticipate fear of job loss, transfer, or physical threats?</strong>
+                <div style="font-size: 0.8rem; color: #fda4af; margin-top: 0.25rem;" data-i18n="fear_yes">
+                  Yes - Flag this case for Priority Retaliation Monitoring & Automated 30/90-Day Welfare Check-ins
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+            <span>🛡️</span>
+            <span data-i18n="btn_submit_complaint">Submit Complaint Securely</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW 3: TRACK COMPLAINT STATUS -->
+    <section id="view-track" class="app-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>📡</span>
+            <span data-i18n="track_heading">Live Complaint Tracking & Resolution</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="track_sub">Check the exact stage, designated investigator, and documented outcomes.</p>
+        </div>
+      </div>
+
+      <!-- Track Input Card -->
+      <div style="max-width: 680px; margin: 0 auto 2rem; background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); backdrop-filter: blur(12px);">
+        <label class="form-label" for="track-input">Enter Case ID Reference</label>
+        <div style="display: flex; gap: 0.75rem;">
+          <input type="text" id="track-input" class="form-control" placeholder="e.g. JFP-2026-8942" style="font-family: monospace; font-size: 1.1rem; font-weight: 700; text-transform: uppercase;">
+          <button id="track-btn" class="btn btn-primary">
+            <span>🔍</span>
+            <span>Check Status</span>
+          </button>
+        </div>
+
+        <!-- Quick Test Buttons -->
+        <div style="margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted);">
+          <span>Click to test samples:</span>
+          <button class="btn btn-secondary btn-sm" onclick="setAndTrack('JFP-2026-8942')">JFP-2026-8942 (Resolved)</button>
+          <button class="btn btn-secondary btn-sm" onclick="setAndTrack('JFP-2026-9104')">JFP-2026-9104 (Inquiry)</button>
+          <button class="btn btn-secondary btn-sm" onclick="setAndTrack('JFP-2026-9531')">JFP-2026-9531 (Assigned)</button>
+        </div>
+      </div>
+
+      <!-- Tracking Results Container (Populated via JS) -->
+      <div id="track-result-container" style="display: none;"></div>
+    </section>
+
+    <!-- VIEW 4: RETALIATION SAFEGUARD HUB -->
+    <section id="view-retaliation" class="app-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>🛡️</span>
+            <span data-i18n="retaliation_heading">Anti-Retaliation Protection Hub</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="retaliation_sub">Safeguarding citizens & employees against harassment, transfer threats, or adverse punishment.</p>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="triggerEmergencyAlert()">
+          🚨 Immediate Escalation Hotline
+        </button>
+      </div>
+
+      <!-- Protocol Overview Grid -->
+      <div class="pillars-grid" style="margin-bottom: 2.5rem;">
+        <div class="pillar-card" style="border-left: 3px solid #f43f5e;">
+          <div class="pillar-icon-box icon-rose">⏱️</div>
+          <h3 class="pillar-title">30-Day Welfare Check-In</h3>
+          <p class="pillar-text">Automated check-in to confirm complainant has not faced adverse job consequences, hostile transfers, or localized intimidation.</p>
+        </div>
+
+        <div class="pillar-card" style="border-left: 3px solid #f59e0b;">
+          <div class="pillar-icon-box icon-amber">🛡️</div>
+          <h3 class="pillar-title">90-Day Sustained Protection</h3>
+          <p class="pillar-text">Second-tier verification to ensure long-term immunity from quiet retaliation or subtle victimization after case closure.</p>
+        </div>
+
+        <div class="pillar-card" style="border-left: 3px solid #3b82f6;">
+          <div class="pillar-icon-box icon-blue">⚡</div>
+          <h3 class="pillar-title">Dedicated Fast-Track Escalation</h3>
+          <p class="pillar-text">If retaliation is reported, an immediate freeze on transfers/disciplinary action is submitted directly to the State Vigilance Chief.</p>
+        </div>
+      </div>
+
+      <!-- Interactive Check-In Survey Simulation -->
+      <div class="retaliation-card">
+        <div class="retaliation-header">
+          <div>
+            <h3 style="color: #fff; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem;" data-i18n="checkin_title">
+              <span>📋</span>
+              <span>Automated Post-Filing Welfare Check-In</span>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;" data-i18n="checkin_desc">
+              Under our Retaliation Protection Protocol, check-ins are conducted at Day 30 and Day 90 to ensure your safety.
+            </p>
+          </div>
+        </div>
+
+        <div class="retaliation-survey-box">
+          <form id="retaliation-survey-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="retaliation-case-select">Select Your Case Reference ID <span class="required">*</span></label>
+                <select id="retaliation-case-select" class="form-control" required></select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Check-in Milestone</label>
+                <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                  <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                    <input type="radio" name="checkinType" value="30" checked>
+                    <span>30-Day Check-in</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                    <input type="radio" name="checkinType" value="90">
+                    <span>90-Day Check-in</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Survey Question -->
+            <div style="background: rgba(255,255,255,0.03); padding: 1.2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid var(--border-subtle);">
+              <label class="form-label" style="font-size: 1rem; color: #fff;">
+                "Have you experienced any intimidation, workplace pressure, sudden transfer orders, or threats since filing this grievance?"
+              </label>
+              <div style="display: flex; gap: 2rem; margin-top: 0.75rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: #34d399; font-weight: 600;">
+                  <input type="radio" name="facedThreat" value="no" checked>
+                  <span>No, everything is safe and normal</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: #f43f5e; font-weight: 600;">
+                  <input type="radio" name="facedThreat" value="yes">
+                  <span>Yes, I am facing retaliation or threats!</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="retaliation-notes">Additional Observations or Incident Details (Optional)</label>
+              <textarea id="retaliation-notes" class="form-control" placeholder="If yes, please describe the threat or official responsible..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-emerald">
+              <span>✓</span>
+              <span>Submit Welfare Response</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: DESIGNATED OFFICER PORTAL & AUDIT LOG -->
+    <section id="view-officer" class="app-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>👨‍⚖️</span>
+            <span data-i18n="officer_heading">Designated Vigilance Officer Desk</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="officer_sub">Secure role-based dashboard. All complainant record views are logged.</p>
+        </div>
+        <span class="role-badge-pill role-officer" data-i18n="officer_role_badge">
+          Authenticated: Vigilance Officer Dr. Rajeshwari IPS (#TN-VIG-804)
+        </span>
+      </div>
+
+      <!-- Active Cases Roster -->
+      <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 1rem;">Active Assigned Complaints & Dossiers</h3>
+      <div id="officer-cases-list"></div>
+
+      <!-- Immutable Audit Trail Section -->
+      <div style="margin-top: 3rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📜</span>
+              <span>Tamper-Evident Access Audit Trail (Zero Identity Leak)</span>
+            </h3>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              Every time an officer views or decrypts complainant information, an unalterable log record is permanently etched.
+            </p>
+          </div>
+          <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 0.3rem 0.7rem; border-radius: var(--radius-full); border: 1px solid rgba(16, 185, 129, 0.3);">
+            ● Cryptographically Chained
+          </span>
+        </div>
+
+        <div class="audit-table-wrapper">
+          <table class="audit-table">
+            <thead>
+              <tr>
+                <th>Log ID</th>
+                <th>Timestamp</th>
+                <th>Officer / System</th>
+                <th>Action Type</th>
+                <th>Target Case</th>
+                <th>Details / Reason</th>
+              </tr>
+            </thead>
+            <tbody id="audit-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: IMPACT METRICS & ANALYTICS -->
+    <section id="view-metrics" class="app-view">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>📊</span>
+            <span data-i18n="metrics_heading">Public Transparency & Impact Metrics</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="metrics_sub">Real-time key performance indicators measuring speed, visibility, and accountability.</p>
+        </div>
+      </div>
+
+      <!-- Key KPI Cards based on User Requirements -->
+      <div class="metrics-summary-grid">
+        <!-- Metric 1: Case Resolve Time -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Case Resolve Time</span>
+            <span>⏱️</span>
+          </div>
+          <div id="metric-resolve-time" class="metric-value" style="color: #60a5fa;">11.4 Days</div>
+          <div class="metric-delta delta-good">
+            <span>Target was &lt; 15 days</span>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+            Baseline before portal: <strong>30+ Days</strong>. Improvement: <strong>62% faster</strong>.
+          </div>
+        </div>
+
+        <!-- Metric 2: Status Visibility -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Status Visibility</span>
+            <span>👁️</span>
+          </div>
+          <div id="metric-status-visibility" class="metric-value" style="color: #34d399;">100%</div>
+          <div class="metric-delta delta-good">
+            <span>100% Cases Trackable Online</span>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+            Before portal: 0% (No reference numbers or public tracking).
+          </div>
+        </div>
+
+        <!-- Metric 3: Documented Outcome -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Documented Outcome</span>
+            <span>⚖️</span>
+          </div>
+          <div id="metric-documented-outcome" class="metric-value" style="color: #fbbf24;">100%</div>
+          <div class="metric-delta delta-good">
+            <span>Clear Yes/No & Decisions</span>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+            Every closed case includes signed disciplinary/corrective records.
+          </div>
+        </div>
+
+        <!-- Metric 4: Verified ID vs Anonymous Ratio -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Verified vs Anonymous</span>
+            <span>🕵️‍♂️</span>
+          </div>
+          <div id="metric-verified-ratio" class="metric-value" style="color: #c084fc;">33% / 67%</div>
+          <div class="metric-delta delta-good">
+            <span>67% Whistleblowers Anonymous</span>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+            High anonymity demonstrates trust in protection mechanisms.
+          </div>
+        </div>
+
+        <!-- Metric 5: Audit Trail Coverage -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Audit Trail Coverage</span>
+            <span>🔐</span>
+          </div>
+          <div id="metric-audit-coverage" class="metric-value" style="color: #38bdf8;">100%</div>
+          <div class="metric-delta delta-good">
+            <span>Full History Preserved</span>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+            100% officer dossier views cryptographically logged.
+          </div>
+        </div>
+      </div>
+
+      <!-- Before vs After Platform Comparison Table -->
+      <div class="form-card" style="margin-top: 2rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 1rem; color: #fff;">
+          Transformation Scorecard: Before vs After Platform Implementation
+        </h3>
+        <table class="audit-table">
+          <thead>
+            <tr>
+              <th>Evaluation Parameter</th>
+              <th style="color: #f87171;">Previous Manual System</th>
+              <th style="color: #34d399;">With "Justice for People" Software</th>
+              <th>Impact Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Safe Complaint Submission</strong></td>
+              <td style="color: #fca5a5;">Requires physical paper petition; high identity leak risk.</td>
+              <td style="color: #a7f3d0;">100% Anonymous online portal; no IP logging.</td>
+              <td><span class="status-pill status-decision">SOLVED</span></td>
+            </tr>
+            <tr>
+              <td><strong>Status Tracking</strong></td>
+              <td style="color: #fca5a5;">No tracking; no reference number; must visit office repeatedly.</td>
+              <td style="color: #a7f3d0;">Unique Case ID; real-time stage-by-stage online timeline.</td>
+              <td><span class="status-pill status-decision">100% VISIBLE</span></td>
+            </tr>
+            <tr>
+              <td><strong>Process Transparency</strong></td>
+              <td style="color: #fca5a5;">Opaque; unknown decision-maker; no SLA commitment.</td>
+              <td style="color: #a7f3d0;">Designated officer transparency; documented formal outcomes.</td>
+              <td><span class="status-pill status-decision">ACCOUNTABLE</span></td>
+            </tr>
+            <tr>
+              <td><strong>Fear of Retaliation</strong></td>
+              <td style="color: #fca5a5;">Frequent transfers, job loss, and punitive victimization.</td>
+              <td style="color: #a7f3d0;">Automated 30 & 90-day welfare check-in + emergency freeze hotline.</td>
+              <td><span class="status-pill status-decision">PROTECTED</span></td>
+            </tr>
+            <tr>
+              <td><strong>Average Resolution Time</strong></td>
+              <td style="color: #fca5a5;">30 to 90+ days without accountability.</td>
+              <td style="color: #a7f3d0;">11.4 days average statutory SLA tracking.</td>
+              <td><span class="status-pill status-decision">62% FASTER</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- Officer Action Modal -->
+  <div id="officer-action-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div style="background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); max-width: 600px; width: 100%; padding: 2rem; box-shadow: var(--shadow-lg);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.25rem;">
+          Officer Case Review: <span id="modal-case-id" style="color: var(--accent-cyan); font-family: monospace;"></span>
+        </h3>
+        <button onclick="closeOfficerModal()" style="background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
+      </div>
+
+      <div style="margin-bottom: 1.25rem; font-size: 0.9rem;">
+        <div style="color: var(--text-muted); margin-bottom: 0.25rem;">Subject:</div>
+        <div id="modal-case-subject" style="font-weight: 600; color: #fff;"></div>
+      </div>
+
+      <div style="margin-bottom: 1.25rem; font-size: 0.85rem;">
+        <div style="color: var(--text-muted); margin-bottom: 0.25rem;">Details:</div>
+        <div id="modal-case-details" style="background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: var(--radius-sm); color: var(--text-main); max-height: 120px; overflow-y: auto;"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="modal-status-select">Update Workflow Stage</label>
+        <select id="modal-status-select" class="form-control">
+          <option value="submitted">Stage 1: Acknowledged & Received</option>
+          <option value="assigned">Stage 2: Officer Assigned</option>
+          <option value="investigating">Stage 3: Evidence Inquiry & Hearing</option>
+          <option value="decision_issued">Stage 4: Formal Documented Decision Issued</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="modal-decision-text">Formal Decision & Sanction Summary</label>
+        <textarea id="modal-decision-text" class="form-control" placeholder="Specify final verdict, departmental sanctions, suspension orders, or resolution actions..."></textarea>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary btn-sm" onclick="closeOfficerModal()">Cancel</button>
+        <button class="btn btn-primary btn-sm" onclick="saveOfficerAction()">Save & Record in Audit Log</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Inline Helper Scripts for direct button interactions -->
+  <script>
+    function quickFillTrack(id) {
+      document.getElementById('quick-track-input').value = id;
+      document.getElementById('quick-track-btn').click();
+    }
+    function setAndTrack(id) {
+      document.getElementById('track-input').value = id;
+      document.getElementById('track-btn').click();
+    }
+    function trackFromReceipt() {
+      const id = document.getElementById('receipt-case-id').textContent;
+      switchView('track');
+      document.getElementById('track-input').value = id;
+      trackCase(id);
+    }
+    function triggerEmergencyAlert() {
+      const cid = prompt("Please enter your Case ID for Urgent Retaliation Protection:", "JFP-2026-9104");
+      if (cid) {
+        logAudit(
+          "EMERGENCY_HOTLINE_TRIGGERED",
+          cid.toUpperCase(),
+          "URGENT: Complainant triggered emergency retaliation escalation hotline. Direct signal dispatched to Chief Oversight Cell.",
+          "EMERGENCY_HOTLINE"
+        );
+        showToast("🚨 Emergency Escalation Dispatched! Protective stay order request transmitted to Oversight Division.", "danger");
+      }
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
